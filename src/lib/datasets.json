@@ -1,0 +1,22 @@
+{
+  "GSE154659": {
+    "paper_doi": "https://doi.org/10.1016/j.neuron.2020.07.026",
+    "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE154659",
+    "species": "Mus musculus"
+  },
+  "GSE155622": {
+    "paper_doi": "https://doi.org/10.1038/s41422-021-00479-9",
+    "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE155622",
+    "species": "Mus musculus"
+  },
+  "GSE249746": {
+    "paper_doi": "https://doi.org/10.1101/2023.03.17.533207",
+    "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE249746",
+    "species": "Homo sapiens"
+  },
+  "North_2019": {
+    "paper_doi": "https://doi.org/10.1093/brain/awz063",
+    "source_url": "https://apps.utdallas.edu/bbs/painneurosciencelab/sensoryomics/hdrgclinical/",
+    "species": "Homo sapiens"
+  }
+}
