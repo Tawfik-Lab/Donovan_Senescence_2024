@@ -19,28 +19,34 @@ Below are the datasets used in this analysis, including publication references a
 
 - **North 2019**  
   - Paper DOI: [https://doi.org/10.1093/brain/awz063](https://doi.org/10.1093/brain/awz063)
-  - Source: [UT Dallas Pain Neuro Lab](https://apps.utdallas.edu/bbs/painneurosciencelab/sensoryomics/hdrgclinical/)
+  - Sources:
+      - [Supplementary Data](https://academic.oup.com/brain/article/142/5/1215/5382382#supplementary-data)
+      - [UT Dallas Pain Neuro Lab](https://apps.utdallas.edu/bbs/painneurosciencelab/sensoryomics/hdrgclinical/)
   - Species: *Homo sapiens*
+  - Note: If `wget` fails, please download this data manually using the provided links.
 
 
 # Build instructions
 
-```
-# will make all targets
+This section provides instructions for building and cleaning the project.
+
+
+## Build All Targets
+```sh
 cd build
 make
 ```
 
-If you wanted to build individual targets
-```
+## Build individual targets
+
+```sh
 cd build
 make downloads
 make datasets
 make figures
 ```
 
-
-If you want to clean it all up
-```
+## Clean up
+```sh
 make clean
 ```
