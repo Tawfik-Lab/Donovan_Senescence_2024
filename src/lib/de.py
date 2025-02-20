@@ -80,7 +80,7 @@ def flag_de(de_tables, log2fc_thresh=1.0, p_column='ranksums-fdr-p', p_thresh=.0
         de['is-de'] = [is_de(row) for i, row in de.iterrows()]
 
 
-def get_de_genes(de_tables, genesets=None, genes=None):
+def get_de_genes(de_tables, genesets=None, genes=None, only_up=False):
     """
     """
     # usually takes a dict of data frames, but could take a single just as well
@@ -102,6 +102,8 @@ def get_de_genes(de_tables, genesets=None, genes=None):
         if 'is-de' not in de:
             raise Exception(f'must use flag_de function to add is-de column to data')
         de = de[de['is-de']]
+        if only_up:
+            de = de[de['log2fc'] > 0]
         for g in de.index:
             if len(genes) > 0:
                 if g in genes:
@@ -110,18 +112,21 @@ def get_de_genes(de_tables, genesets=None, genes=None):
                 de_genes.add(g)
     return de_genes
 
-def summarize_de_genes(de_tables, genesets=None, genes=None):
+def summarize_de_genes(de_tables, genesets=None, genes=None, always_include_manual_genes=True, only_up=True):
     by_geneset = {}
     all_de_genes = set()
     for gsl, gsn in genesets.items():
-        de_genes = get_de_genes(de_tables, genesets={gsl: gsn})
+        de_genes = get_de_genes(de_tables, genesets={gsl: gsn}, only_up=only_up)
         by_geneset[gsl] = de_genes
         all_de_genes = all_de_genes.union(de_genes)
 
     if genes:
-        de_genes = get_de_genes(de_tables, genes=genes)
+        de_genes = get_de_genes(de_tables, genes=genes, only_up=only_up)
         by_geneset['manual'] = de_genes
         all_de_genes = all_de_genes.union(de_genes)
+        if always_include_manual_genes:
+            by_geneset['manual'] = set(genes)
+            all_de_genes = all_de_genes.union(set(genes))
 
     rows = []
     columns_start = ['index', 'gene', 'gene_group', 'cell_group', 'log2fc']
